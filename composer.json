@@ -1,0 +1,24 @@
+{
+    "name": "wjcms/framework",
+    "description": "framework learn",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "神兵小将 wjcms",
+            "email": "wjcms@qq.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "houdunwang/wechat": "^2.0"
+    },
+    "autoload":{
+        "files":[
+            "src/core/helpers.php"
+        ],
+        "psr-4":{
+            "wjcms\\framework\\":"src"
+        }
+    }
+}
