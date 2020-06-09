@@ -18,7 +18,8 @@
             "src/core/helpers.php"
         ],
         "psr-4":{
-            "wjcms\\framework\\":"src"
+            "wjcms\\framework\\":"src",
+            "App\\":"app"
         }
     }
 }

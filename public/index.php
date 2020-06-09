@@ -2,12 +2,18 @@
 
 use wjcms\framework\core\App;
 
-
 require '../vendor/autoload.php';
 
 App::start();
+
+
+
+
+
+// echo Config::get('app.name');
+
+// dump(config('app.name'));
 // $img=$app->make('Img',true);
-dump(config('app.name'));
 // $ img->captcha();
 
 // $config=$app->make('Config')->set('database.mysql.host1','192.168.1.2');

@@ -1,11 +1,11 @@
 <?php
 
-namespace wjcms\framework\config;
+namespace wjcms\framework\middleware;
 
 use wjcms\framework\core\Provider;
 use wjcms\framework\core\App;
 
-class ConfigProvider extends Provider
+class MiddlewareProvider extends Provider
 {
 
     //是否延迟注册
@@ -14,15 +14,13 @@ class ConfigProvider extends Provider
     //启动方法
     public function boot()
     {
-        //加载配置
-        // $this->app->make('Config')->load();
+        //执行全局中间件
+        app('Middleware')->global();
     }
 
     //注册服务
     public function regsiter(App $app)
     {
-        $config = new Config();
-        $config->load();
-        $app->instance('Config', $config);
+        $app->bind('Middleware', Middleware::class, true);
     }
 }

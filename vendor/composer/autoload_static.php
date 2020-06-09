@@ -19,6 +19,10 @@ class ComposerStaticInitfa965255f13213a0f9f4d6623c6991cd
         array (
             'Houdunwang\\WeChat\\' => 18,
         ),
+        'A' => 
+        array (
+            'App\\' => 4,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -29,6 +33,10 @@ class ComposerStaticInitfa965255f13213a0f9f4d6623c6991cd
         'Houdunwang\\WeChat\\' => 
         array (
             0 => __DIR__ . '/..' . '/houdunwang/wechat/src',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app',
         ),
     );
 

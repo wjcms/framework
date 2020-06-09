@@ -1,24 +1,25 @@
 <?php
 
-namespace wjcms\framework\database;
+namespace wjcms\framework\route;
 
 use wjcms\framework\core\Provider;
 use wjcms\framework\core\App;
 
-class DatabaseProvider extends Provider
+class RouteProvider extends Provider
 {
 
     //是否延迟注册
-    protected $defer = true;
+    protected $defer = false;
 
     //启动方法
     public function boot()
     {
+        //
     }
 
     //注册服务
     public function regsiter(App $app)
     {
-        $app->bind('Database', Database::class, true);
+        $app->bind('Route', Route::class, true);
     }
 }

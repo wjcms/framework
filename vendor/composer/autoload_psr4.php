@@ -8,4 +8,5 @@ $baseDir = dirname($vendorDir);
 return array(
     'wjcms\\framework\\' => array($baseDir . '/src'),
     'Houdunwang\\WeChat\\' => array($vendorDir . '/houdunwang/wechat/src'),
+    'App\\' => array($baseDir . '/app'),
 );
