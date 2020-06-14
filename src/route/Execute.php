@@ -49,11 +49,18 @@ trait Execute
         foreach ($reflection->getParameters() as $param) {
             $name = $param->name;
             if (isset($this->route['matches'][$name])) {
-                $args[]=$this->route['matches'][$name];
+                if ($class = $param->getClass()) {
+                    $className = $class->name;
+                    // dd($this->route['matches'][$name]);
+                    $args[] = new $className($this->route['matches'][$name]);
+                } else {
+                    $args[] = $this->route['matches'][$name];
+                }
             } elseif ($class = $param->getClass()) {
                 $args[] = app($class->name);
             }
         }
+        // dd($args);
         return $reflection->invokeArgs($controller, $args);
     }
 

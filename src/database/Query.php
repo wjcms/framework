@@ -7,6 +7,8 @@ use PDO;
 
 class Query
 {
+    use Connect;
+    
     protected $table;
     protected $options =['limit'=>'','field'=>'*','where'=>'','orderBy'=>'','groupBy'=>''];
     protected $bindParams = [];
@@ -65,7 +67,7 @@ class Query
             }, array_keys($params))),
             $this->formatWhere()
         );
-        dump($sql);
+        // dump($sql);
         return $this->execute($sql, $params);
     }
 
@@ -115,14 +117,46 @@ class Query
         );
     }
 
-    public function get()
+    /**
+     * 按主键id查找
+     */
+    public function find(int $id = 1)
     {
+        $this->where([
+            [$this->key,'=',$id]
+        ]);
+        return $this->first();
+    }
+
+
+    public function first()
+    {
+        return current($this->get());
+    }
+
+    
+    public function in($field, $params)
+    {
+        $name = ":in_{$field}";
+        $this->bindParams[$name] = implode(',', $params);
+        $exp = $field . " IN ({$name})";
+        $this->options['where'].=$exp;
+        // dump($this->options);
+        return $this;
+    }
+    public function get(...$ids)
+    {
+        if (!empty($ids)) {
+            $this->in($this->key, $ids);
+            dump($ids);
+        }
         return  $this->query($this->getSql());
     }
 
     //处理select
     public function query($sql, array $params=[])
     {
+        // dump($sql);
         $sth = $this->connect()->prepare($sql);
         $sth->execute($this->formatPrepareParams($params));
         return $sth->fetchAll(PDO::FETCH_ASSOC);

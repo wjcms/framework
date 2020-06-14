@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use P;
 use wjcms\framework\config\Config;
 
 class UserController

@@ -15,7 +15,7 @@
 //     return "正在访问网站：".$config->get('app.name')."id为 {$id} 个人空间";
 // })->where(['id'=>'\d+']);
 Route::get('/', 'HomeController@index');
-Route::get('user/{id}', 'UserController@show')->middleware(['Auth']);;
+Route::get('article/{article}', 'ArticleController@show');
 
 // Route::get('login', 'LoginController@login');
 // Route::post('article', 'ArticleController@store')->middleware(['Auth']);

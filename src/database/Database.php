@@ -8,6 +8,5 @@ namespace wjcms\framework\database;
  */
 class Database extends Query
 {
-    use Connect;
     public static $link;
 }
